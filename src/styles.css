@@ -18,7 +18,9 @@ body {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -165,12 +167,546 @@ label span {
   font-size: 13px;
 }
 
-input {
+input,
+select,
+textarea {
   width: 100%;
   min-height: 42px;
   border-radius: 7px;
   border: 1px solid var(--border);
   padding: 0 12px;
+  background: #ffffff;
+  color: #172033;
+}
+
+textarea {
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.app section.panel,
+.app .detail-card {
+  margin-bottom: 18px;
+}
+
+/* ---------------- 头部身份切换 ---------------- */
+
+.hero {
+  min-height: auto;
+}
+
+.identity {
+  max-width: 420px;
+}
+
+/* ---------------- 筛选 ---------------- */
+
+.filter-panel h2 {
+  margin-bottom: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.chip b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #eef2e6;
+  color: var(--primary);
+  font-size: 12px;
+}
+
+.chip.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.chip.active b {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.hint {
+  margin: 14px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ---------------- 状态徽章 ---------------- */
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.badge-held {
+  background: #eef2e6;
+  color: var(--primary);
+}
+
+.badge-transferred {
+  background: #fef3c7;
+  color: var(--secondary);
+}
+
+.badge-review {
+  background: #fee2e2;
+  color: var(--accent);
+}
+
+.ok-text {
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.lock-text,
+.warn-text {
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.error-text {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.issues {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.issues em {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #fee2e2;
+  color: var(--accent);
+  font-size: 12px;
+  font-style: normal;
+}
+
+/* ---------------- 样本列表 ---------------- */
+
+.record-row {
+  display: grid;
+  grid-template-columns: 54px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+  cursor: default;
+}
+
+.record-row.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.record-main {
+  cursor: pointer;
+  min-width: 0;
+}
+
+.record-row h3 {
+  margin: 0 0 6px;
+}
+
+.record-row h3 small {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.record-row p {
+  margin: 0 0 8px;
+  color: #526071;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.record-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.record-meta small {
+  color: #64748b;
+}
+
+.detail-btn {
+  padding: 0 14px;
+  align-self: center;
+}
+
+/* ---------------- 详情卡 ---------------- */
+
+.detail-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: #f5f7fb;
+  font-size: 14px;
+}
+
+.detail-top small {
+  color: #64748b;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 0 0 14px;
+}
+
+.detail-grid dt {
+  color: #64748b;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.detail-grid dd {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.note-edit {
+  margin-bottom: 16px;
+}
+
+.note-edit p {
+  margin: 6px 0 0;
+  line-height: 1.7;
+}
+
+.chart-wrap {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfdff;
+}
+
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.chart-head h3 {
+  margin: 0;
+}
+
+.temp-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-empty {
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+}
+
+.temp-editor {
+  margin-top: 12px;
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+}
+
+.temp-add {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr auto;
+  gap: 10px;
+}
+
+.temp-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 8px;
+}
+
+.temp-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: #526071;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.temp-list button {
+  min-height: 26px;
+  padding: 0 8px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.custody-log {
+  margin-top: 16px;
+}
+
+.custody-log ol {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  color: #526071;
+  font-size: 13px;
+}
+
+.custody-log b {
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.detail-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.danger {
+  max-width: 340px;
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #fff5f5;
+  padding: 0 14px;
+}
+
+.return-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  gap: 10px;
+  align-items: end;
+  padding: 14px;
+  border: 1px dashed var(--accent);
+  border-radius: 8px;
+}
+
+/* ---------------- 批量交接 ---------------- */
+
+.batch-select {
+  min-width: 280px;
+}
+
+.batch-table {
+  display: grid;
+  gap: 8px;
+}
+
+.batch-row {
+  display: grid;
+  grid-template-columns: 60px 1.6fr 1fr 2fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+  font-size: 14px;
+}
+
+.batch-row input[type="checkbox"] {
+  width: 18px;
+  min-height: 18px;
+}
+
+.batch-head-row {
+  background: #f5f7fb;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.batch-head-row button {
+  min-height: 30px;
+  font-size: 12px;
+}
+
+.batch-row small {
+  display: block;
+  color: #64748b;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.row-ready {
+  border-left: 4px solid var(--primary);
+}
+
+.row-failed {
+  border-color: var(--accent);
+  background: #fff5f5;
+}
+
+.cell-issues {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fail-list {
+  margin: 0;
+  padding-left: 16px;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.handoff-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f5f7fb;
+}
+
+/* ---------------- 案件关联 ---------------- */
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.case-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fbfdff;
+}
+
+.case-card h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.case-card p {
+  margin: 0 0 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.case-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.case-card li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.case-card li select {
+  min-height: 32px;
+  width: auto;
+  flex: 1;
+  max-width: 180px;
+  font-size: 12px;
+}
+
+.link-btn {
+  min-height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.case-unlinked {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--secondary) 50%, var(--border));
+}
+
+/* ---------------- 新增表单 ---------------- */
+
+.new-temps {
+  margin: 14px 0;
+}
+
+.new-temps > span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 860px) {
+  .metrics,
+  .workspace,
+  .field-grid,
+  .detail-grid,
+  .case-grid,
+  .handoff-form,
+  .return-box {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 24px;
+  }
+
+  .batch-row {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .batch-head-row {
+    display: none;
+  }
 }
 
 .records {
